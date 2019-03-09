@@ -1,0 +1,14 @@
+package ac.cn.chm.uc;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@MapperScan(basePackages = {"ac.cn.chm.uc.*.mapper"})
+public class UcApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(UcApplication.class, args);
+    }
+}

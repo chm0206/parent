@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ac.cn.chm.uc.mapper.UserGroupMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="ac.cn.chm.uc.entity.UserGroup">
+        <id column="ug_id" property="ugId" />
+        <result column="user_id" property="userId" />
+        <result column="group_id" property="groupId" />
+        <result column="add_time" property="addTime" />
+        <result column="vali_time" property="valiTime" />
+        <result column="ug_status" property="ugStatus" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ug_id, user_id, group_id, add_time, vali_time, ug_status
+    </sql>
+
+</mapper>

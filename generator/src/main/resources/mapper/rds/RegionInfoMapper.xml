@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yinghu.app.rds.dao.RegionInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yinghu.app.rds.model.RegionInfo" >
+    <id column="region_id" property="regionId" jdbcType="VARCHAR" />
+    <result column="region_name" property="regionName" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="region_level" property="regionLevel" jdbcType="INTEGER" />
+    <result column="region_sort" property="regionSort" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_time" property="lastTime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="delete_time" property="deleteTime" jdbcType="TIMESTAMP" />
+    <result column="rigion_desc" property="rigionDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    region_id, region_name, parent_id, region_level, region_sort, create_time, last_time, 
+    deleted, delete_time, rigion_desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_base_region
+    where region_id = #{regionId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_base_region
+    where region_id = #{regionId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yinghu.app.rds.model.RegionInfo" >
+    insert into tb_base_region (region_id, region_name, parent_id, 
+      region_level, region_sort, create_time, 
+      last_time, deleted, delete_time, 
+      rigion_desc)
+    values (#{regionId,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, 
+      #{regionLevel,jdbcType=INTEGER}, #{regionSort,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, #{deleteTime,jdbcType=TIMESTAMP}, 
+      #{rigionDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yinghu.app.rds.model.RegionInfo" >
+    insert into tb_base_region
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="regionId != null" >
+        region_id,
+      </if>
+      <if test="regionName != null" >
+        region_name,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="regionLevel != null" >
+        region_level,
+      </if>
+      <if test="regionSort != null" >
+        region_sort,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastTime != null" >
+        last_time,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="deleteTime != null" >
+        delete_time,
+      </if>
+      <if test="rigionDesc != null" >
+        rigion_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="regionId != null" >
+        #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null" >
+        #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="regionLevel != null" >
+        #{regionLevel,jdbcType=INTEGER},
+      </if>
+      <if test="regionSort != null" >
+        #{regionSort,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null" >
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rigionDesc != null" >
+        #{rigionDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yinghu.app.rds.model.RegionInfo" >
+    update tb_base_region
+    <set >
+      <if test="regionName != null" >
+        region_name = #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="regionLevel != null" >
+        region_level = #{regionLevel,jdbcType=INTEGER},
+      </if>
+      <if test="regionSort != null" >
+        region_sort = #{regionSort,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null" >
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null" >
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rigionDesc != null" >
+        rigion_desc = #{rigionDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where region_id = #{regionId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yinghu.app.rds.model.RegionInfo" >
+    update tb_base_region
+    set region_name = #{regionName,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      region_level = #{regionLevel,jdbcType=INTEGER},
+      region_sort = #{regionSort,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_time = #{lastTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      rigion_desc = #{rigionDesc,jdbcType=VARCHAR}
+    where region_id = #{regionId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ac.cn.chm.uc.mapper.MenuInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="ac.cn.chm.uc.entity.MenuInfo">
+        <id column="menu_id" property="menuId" />
+        <result column="menu_name" property="menuName" />
+        <result column="menu_url" property="menuUrl" />
+        <result column="parent_id" property="parentId" />
+        <result column="menu_rank" property="menuRank" />
+        <result column="menu_status" property="menuStatus" />
+        <result column="add_time" property="addTime" />
+        <result column="edit_time" property="editTime" />
+        <result column="operator_id" property="operatorId" />
+        <result column="menu_row1" property="menuRow1" />
+        <result column="menu_row2" property="menuRow2" />
+        <result column="menu_row3" property="menuRow3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        menu_id, menu_name, menu_url, parent_id, menu_rank, menu_status, add_time, edit_time, operator_id, menu_row1, menu_row2, menu_row3
+    </sql>
+
+</mapper>

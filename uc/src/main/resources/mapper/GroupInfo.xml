@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ac.cn.chm.uc.mapper.GroupInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="ac.cn.chm.uc.entity.GroupInfo">
+        <id column="group_id" property="groupId" />
+        <result column="group_name" property="groupName" />
+        <result column="parent_id" property="parentId" />
+        <result column="group_status" property="groupStatus" />
+        <result column="rights" property="rights" />
+        <result column="att_time" property="attTime" />
+        <result column="edit_time" property="editTime" />
+        <result column="operator_id" property="operatorId" />
+        <result column="group_row1" property="groupRow1" />
+        <result column="group_row2" property="groupRow2" />
+        <result column="group_row3" property="groupRow3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        group_id, group_name, parent_id, group_status, rights, att_time, edit_time, operator_id, group_row1, group_row2, group_row3
+    </sql>
+
+</mapper>

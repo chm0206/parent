@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ac.cn.chm.sso.mapper.UserInfoMapper" >
+  <resultMap id="UserInfoMap" type="ac.cn.chm.sso.model.UserInfo" >
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_account" property="userAccount" jdbcType="VARCHAR" />
+    <result column="user_pass" property="userPass" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="user_icon" property="userIcon" jdbcType="VARCHAR" />
+    <result column="user_status" property="userStatus" jdbcType="CHAR" />
+    <result column="vali_time" property="valiTime" jdbcType="TIMESTAMP" />
+    <result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+    <result column="owner_id" property="ownerId" jdbcType="BIGINT" />
+    <result column="user_row1" property="userRow1" jdbcType="VARCHAR" />
+    <result column="user_row2" property="userRow2" jdbcType="VARCHAR" />
+    <result column="user_row3" property="userRow3" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- 表名称 -->
+  <sql id="table_name">uc_user_info</sql>
+  <!-- 表所有字段 -->
+  <sql id="Base_Column_List" >
+    user_id, user_account, user_pass, add_time, user_icon, user_status, vali_time, operator_id, 
+    owner_id, user_row1, user_row2, user_row3
+  </sql>
+  <sql id="breviary_column">
+    user_id,user_account,add_time,user_icon,user_status,vali_time,operator_id,owner_id
+  </sql>
+  <select id="findPdById" resultMap="UserInfoMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_user_info
+    where user_id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <!-- 保存登录信息只需要几个关键字段 -->
+  <select id="findUserLoginInfo" resultMap="UserInfoMap" parameterType="ac.cn.chm.sso.model.UserInfo" >
+    select
+    <include refid="breviary_column" />
+    FROM
+    <include refid="table_name" />
+    ui
+    WHERE ui.user_pass = #{userPass,jdbcType=VARCHAR}
+    AND
+    ( 1=0
+    <if test="userId != null and userId !=''">
+      OR ui.user_id =  #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="userAccount != null and userAccount !=''">
+      OR ui.user_account =  #{userAccount,jdbcType=VARCHAR}
+    </if>
+    )
+  </select>
+
+  <select id="listPagePd" resultMap="UserInfoMap" parameterType="ac.cn.chm.base.Page" >
+    select
+    <include refid="breviary_column" />
+    from
+    <include refid="table_name" />
+    where 1=1
+    <if test="pd.userId != null and pd.userId != ''">
+      and user_id = #{pd.userId,jdbcType=BIGINT}
+    </if>
+    <if test="pd.userAccount != null and pd.userAccount != ''">
+      and user_account = #{pd.userAccount,jdbcType=VARCHAR}
+    </if>
+    <if test="pd.addTime != null and pd.addTime != ''">
+      and add_time = #{pd.addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="pd.userPass != null and pd.userPass != ''">
+      and user_pass = #{pd.userPass,jdbcType=VARCHAR}
+    </if>
+    <if test="pd.userIcon != null and pd.userIcon != ''">
+      and user_icon = #{pd.userIcon,jdbcType=VARCHAR}
+    </if>
+    <if test="pd.userStatus != null and pd.userStatus != ''">
+      and user_status = #{pd.userStatus,jdbcType=CHAR}
+    </if>
+    <if test="pd.valiTime != null and pd.valiTime != ''">
+      and vali_time = #{pd.valiTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="pd.operatorId != null and pd.operatorId != ''">
+      and operator_id = #{pd.operatorId,jdbcType=BIGINT}
+    </if>
+    <if test="pd.ownerID != null and pd.ownerID != ''">
+      and owner_id = #{pd.ownerID,jdbcType=BIGINT}
+    </if>
+    <if test="pd.userRow1 != null and pd.userRow1 != ''">
+      and user_row1 = #{pd.userRow1,jdbcType=VARCHAR}
+    </if>
+
+    <if test="pd.userRow2 != null and pd.userRow2 != ''">
+      and user_row2 = #{pd.userRow2,jdbcType=VARCHAR}
+    </if>
+
+    <if test="pd.userRow3 != null and pd.userRow3 != ''">
+      and user_row3 = #{pd.userRow3,jdbcType=VARCHAR}
+    </if>
+  </select>
+  <insert id="doCreate" parameterType="ac.cn.chm.sso.model.UserInfo" >
+    insert into uc_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null and userId != '' " >
+        user_id,
+      </if>
+      <if test="userAccount != null and userAccount != ''" >
+        user_account,
+      </if>
+      <if test="userPass != null and userPass != ''" >
+        user_pass,
+      </if>
+      <if test="addTime != null and addTime != ''" >
+        add_time,
+      </if>
+      <if test="userIcon != null and userIcon != ''" >
+        user_icon,
+      </if>
+      <if test="userStatus != null and userStatus != ''" >
+        user_status,
+      </if>
+      <if test="valiTime != null and valiTime != ''" >
+        vali_time,
+      </if>
+      <if test="operatorId != null and operatorId != ''" >
+        operator_id,
+      </if>
+      <if test="ownerId != null and ownerId != ''" >
+        owner_id,
+      </if>
+      <if test="userRow1 != null and userRow1 != ''" >
+        user_row1,
+      </if>
+      <if test="userRow2 != null and userRow2 != ''" >
+        user_row2,
+      </if>
+      <if test="userRow3 != null and userRow3 != ''" >
+        user_row3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null and userId != ''" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userAccount != null and userAccount != ''" >
+        #{userAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userPass != null and userPass != ''" >
+        #{userPass,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null and addTime != ''" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userIcon != null and userIcon != ''" >
+        #{userIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null and userStatus != ''" >
+        #{userStatus,jdbcType=CHAR},
+      </if>
+      <if test="valiTime != null and valiTime != ''" >
+        #{valiTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null and operatorId != ''" >
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="ownerId != null and ownerId != ''" >
+        #{ownerId,jdbcType=BIGINT},
+      </if>
+      <if test="userRow1 != null and userRow1 != ''" >
+        #{userRow1,jdbcType=VARCHAR},
+      </if>
+      <if test="userRow2 != null and userRow2 != ''" >
+        #{userRow2,jdbcType=VARCHAR},
+      </if>
+      <if test="userRow3 != null and userRow3 != ''" >
+        #{userRow3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="doUpdate" parameterType="ac.cn.chm.base.PageData" >
+    update uc_user_info
+    <set >
+      <if test="v.userAccount != null and v.userAccount != ''" >
+        user_account = #{v.userAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="v.userPass != null and v.userPass != ''" >
+        user_pass = #{v.userPass,jdbcType=VARCHAR},
+      </if>
+      <if test="v.addTime != null and v.addTime != ''" >
+        add_time = #{v.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="v.userIcon != null and v.userIcon != ''" >
+        user_icon = #{v.userIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="v.userStatus != null and v.userStatus != ''" >
+        user_status = #{v.userStatus,jdbcType=CHAR},
+      </if>
+      <if test="v.valiTime != null and v.valiTime != ''" >
+        vali_time = #{v.valiTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="v.operatorId != null and v.operatorId != ''" >
+        operator_id = #{v.operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="v.ownerId != null and v.ownerId != ''" >
+        owner_id = #{v.ownerId,jdbcType=BIGINT},
+      </if>
+      <if test="v.userRow1 != null and v.userRow1 != ''" >
+        user_row1 = #{v.userRow1,jdbcType=VARCHAR},
+      </if>
+      <if test="v.userRow2 != null and v.userRow2 != ''" >
+        user_row2 = #{v.userRow2,jdbcType=VARCHAR},
+      </if>
+      <if test="v.userRow3 != null and v.userRow3 != ''" >
+        user_row3 = #{v.userRow3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{v.userId,jdbcType=BIGINT}
+    <!--使用or id=id or id=id ，解决user_id不为空又不产生冲突的问题-->
+    <if test="ids!=null and ids.size()>0">
+      <foreach collection="ids " item="id" index="index" open="or(" separator="or" close=")">
+        user_id = '${id}'
+      </foreach>
+    </if>
+  </update>
+</mapper>

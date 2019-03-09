@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yinghu.app.rds.dao.RightInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yinghu.app.rds.model.RightInfo" >
+    <id column="right_id" property="rightId" jdbcType="VARCHAR" />
+    <result column="right_name" property="rightName" jdbcType="VARCHAR" />
+    <result column="right_state" property="rightState" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="last_time" property="lastTime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="delete_time" property="deleteTime" jdbcType="TIMESTAMP" />
+    <result column="right_desc" property="rightDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    right_id, right_name, right_state, parent_id, creat_time, last_time, deleted, delete_time, 
+    right_desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_base_right
+    where right_id = #{rightId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_base_right
+    where right_id = #{rightId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yinghu.app.rds.model.RightInfo" >
+    insert into tb_base_right (right_id, right_name, right_state, 
+      parent_id, creat_time, last_time, 
+      deleted, delete_time, right_desc
+      )
+    values (#{rightId,jdbcType=VARCHAR}, #{rightName,jdbcType=VARCHAR}, #{rightState,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, #{lastTime,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER}, #{deleteTime,jdbcType=TIMESTAMP}, #{rightDesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yinghu.app.rds.model.RightInfo" >
+    insert into tb_base_right
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rightId != null" >
+        right_id,
+      </if>
+      <if test="rightName != null" >
+        right_name,
+      </if>
+      <if test="rightState != null" >
+        right_state,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="creatTime != null" >
+        creat_time,
+      </if>
+      <if test="lastTime != null" >
+        last_time,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="deleteTime != null" >
+        delete_time,
+      </if>
+      <if test="rightDesc != null" >
+        right_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rightId != null" >
+        #{rightId,jdbcType=VARCHAR},
+      </if>
+      <if test="rightName != null" >
+        #{rightName,jdbcType=VARCHAR},
+      </if>
+      <if test="rightState != null" >
+        #{rightState,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null" >
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rightDesc != null" >
+        #{rightDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yinghu.app.rds.model.RightInfo" >
+    update tb_base_right
+    <set >
+      <if test="rightName != null" >
+        right_name = #{rightName,jdbcType=VARCHAR},
+      </if>
+      <if test="rightState != null" >
+        right_state = #{rightState,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null" >
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null" >
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rightDesc != null" >
+        right_desc = #{rightDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where right_id = #{rightId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yinghu.app.rds.model.RightInfo" >
+    update tb_base_right
+    set right_name = #{rightName,jdbcType=VARCHAR},
+      right_state = #{rightState,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      last_time = #{lastTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      right_desc = #{rightDesc,jdbcType=VARCHAR}
+    where right_id = #{rightId,jdbcType=VARCHAR}
+  </update>
+</mapper>

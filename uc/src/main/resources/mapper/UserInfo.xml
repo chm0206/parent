@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ac.cn.chm.uc.mapper.UserInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="ac.cn.chm.uc.entity.UserInfo">
+        <id column="user_id" property="userId" />
+        <result column="user_account" property="userAccount" />
+        <result column="user_pass" property="userPass" />
+        <result column="add_time" property="addTime" />
+        <result column="user_icon" property="userIcon" />
+        <result column="user_status" property="userStatus" />
+        <result column="deleted" property="deleted" />
+        <result column="delete_time" property="deleteTime" />
+        <result column="vali_time" property="valiTime" />
+        <result column="operator_id" property="operatorId" />
+        <result column="owner_id" property="ownerId" />
+        <result column="login_time" property="loginTime" />
+        <result column="login_ip" property="loginIp" />
+        <result column="last_login_error_time" property="lastLoginErrorTime" />
+        <result column="login_error_num" property="loginErrorNum" />
+        <result column="user_row1" property="userRow1" />
+        <result column="user_row2" property="userRow2" />
+        <result column="user_row3" property="userRow3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id, user_account, user_pass, add_time, user_icon, user_status, deleted, delete_time, vali_time, operator_id, owner_id, login_time, login_ip, last_login_error_time, login_error_num, user_row1, user_row2, user_row3
+    </sql>
+
+</mapper>

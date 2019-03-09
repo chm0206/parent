@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ac.cn.chm.uc.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="ac.cn.chm.uc.model.UserInfo">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_account" jdbcType="VARCHAR" property="userAccount" />
+    <result column="user_pass" jdbcType="VARCHAR" property="userPass" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="user_icon" jdbcType="VARCHAR" property="userIcon" />
+    <result column="user_status" jdbcType="CHAR" property="userStatus" />
+    <result column="vali_time" jdbcType="TIMESTAMP" property="valiTime" />
+    <result column="operator_id" jdbcType="BIGINT" property="operatorId" />
+    <result column="owner_id" jdbcType="BIGINT" property="ownerId" />
+    <result column="user_row1" jdbcType="VARCHAR" property="userRow1" />
+    <result column="user_row2" jdbcType="VARCHAR" property="userRow2" />
+    <result column="user_row3" jdbcType="VARCHAR" property="userRow3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_account, user_pass, add_time, user_icon, user_status, vali_time, operator_id, 
+    owner_id, user_row1, user_row2, user_row3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from uc_user_info
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from uc_user_info
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="ac.cn.chm.uc.model.UserInfo">
+    insert into uc_user_info (user_id, user_account, user_pass, 
+      add_time, user_icon, user_status, 
+      vali_time, operator_id, owner_id, 
+      user_row1, user_row2, user_row3
+      )
+    values (#{userId,jdbcType=BIGINT}, #{userAccount,jdbcType=VARCHAR}, #{userPass,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{userIcon,jdbcType=VARCHAR}, #{userStatus,jdbcType=CHAR}, 
+      #{valiTime,jdbcType=TIMESTAMP}, #{operatorId,jdbcType=BIGINT}, #{ownerId,jdbcType=BIGINT}, 
+      #{userRow1,jdbcType=VARCHAR}, #{userRow2,jdbcType=VARCHAR}, #{userRow3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ac.cn.chm.uc.model.UserInfo">
+    insert into uc_user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userAccount != null">
+        user_account,
+      </if>
+      <if test="userPass != null">
+        user_pass,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="userIcon != null">
+        user_icon,
+      </if>
+      <if test="userStatus != null">
+        user_status,
+      </if>
+      <if test="valiTime != null">
+        vali_time,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="ownerId != null">
+        owner_id,
+      </if>
+      <if test="userRow1 != null">
+        user_row1,
+      </if>
+      <if test="userRow2 != null">
+        user_row2,
+      </if>
+      <if test="userRow3 != null">
+        user_row3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userAccount != null">
+        #{userAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userPass != null">
+        #{userPass,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userIcon != null">
+        #{userIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=CHAR},
+      </if>
+      <if test="valiTime != null">
+        #{valiTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="ownerId != null">
+        #{ownerId,jdbcType=BIGINT},
+      </if>
+      <if test="userRow1 != null">
+        #{userRow1,jdbcType=VARCHAR},
+      </if>
+      <if test="userRow2 != null">
+        #{userRow2,jdbcType=VARCHAR},
+      </if>
+      <if test="userRow3 != null">
+        #{userRow3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ac.cn.chm.uc.model.UserInfo">
+    update uc_user_info
+    <set>
+      <if test="userAccount != null">
+        user_account = #{userAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userPass != null">
+        user_pass = #{userPass,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userIcon != null">
+        user_icon = #{userIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        user_status = #{userStatus,jdbcType=CHAR},
+      </if>
+      <if test="valiTime != null">
+        vali_time = #{valiTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="ownerId != null">
+        owner_id = #{ownerId,jdbcType=BIGINT},
+      </if>
+      <if test="userRow1 != null">
+        user_row1 = #{userRow1,jdbcType=VARCHAR},
+      </if>
+      <if test="userRow2 != null">
+        user_row2 = #{userRow2,jdbcType=VARCHAR},
+      </if>
+      <if test="userRow3 != null">
+        user_row3 = #{userRow3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ac.cn.chm.uc.model.UserInfo">
+    update uc_user_info
+    set user_account = #{userAccount,jdbcType=VARCHAR},
+      user_pass = #{userPass,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      user_icon = #{userIcon,jdbcType=VARCHAR},
+      user_status = #{userStatus,jdbcType=CHAR},
+      vali_time = #{valiTime,jdbcType=TIMESTAMP},
+      operator_id = #{operatorId,jdbcType=BIGINT},
+      owner_id = #{ownerId,jdbcType=BIGINT},
+      user_row1 = #{userRow1,jdbcType=VARCHAR},
+      user_row2 = #{userRow2,jdbcType=VARCHAR},
+      user_row3 = #{userRow3,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="ac.cn.chm.uc.model.UserInfo">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_account" jdbcType="VARCHAR" property="userAccount" />
+    <result column="user_pass" jdbcType="VARCHAR" property="userPass" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="user_icon" jdbcType="VARCHAR" property="userIcon" />
+    <result column="user_status" jdbcType="CHAR" property="userStatus" />
+    <result column="vali_time" jdbcType="TIMESTAMP" property="valiTime" />
+    <result column="operator_id" jdbcType="BIGINT" property="operatorId" />
+    <result column="owner_id" jdbcType="BIGINT" property="ownerId" />
+    <result column="user_row1" jdbcType="VARCHAR" property="userRow1" />
+    <result column="user_row2" jdbcType="VARCHAR" property="userRow2" />
+    <result column="user_row3" jdbcType="VARCHAR" property="userRow3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_account, user_pass, add_time, user_icon, user_status, vali_time, operator_id, 
+    owner_id, user_row1, user_row2, user_row3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from uc_user_info
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from uc_user_info
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="ac.cn.chm.uc.model.UserInfo">
+    insert into uc_user_info (user_id, user_account, user_pass, 
+      add_time, user_icon, user_status, 
+      vali_time, operator_id, owner_id, 
+      user_row1, user_row2, user_row3
+      )
+    values (#{userId,jdbcType=BIGINT}, #{userAccount,jdbcType=VARCHAR}, #{userPass,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{userIcon,jdbcType=VARCHAR}, #{userStatus,jdbcType=CHAR}, 
+      #{valiTime,jdbcType=TIMESTAMP}, #{operatorId,jdbcType=BIGINT}, #{ownerId,jdbcType=BIGINT}, 
+      #{userRow1,jdbcType=VARCHAR}, #{userRow2,jdbcType=VARCHAR}, #{userRow3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ac.cn.chm.uc.model.UserInfo">
+    insert into uc_user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userAccount != null">
+        user_account,
+      </if>
+      <if test="userPass != null">
+        user_pass,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="userIcon != null">
+        user_icon,
+      </if>
+      <if test="userStatus != null">
+        user_status,
+      </if>
+      <if test="valiTime != null">
+        vali_time,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="ownerId != null">
+        owner_id,
+      </if>
+      <if test="userRow1 != null">
+        user_row1,
+      </if>
+      <if test="userRow2 != null">
+        user_row2,
+      </if>
+      <if test="userRow3 != null">
+        user_row3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userAccount != null">
+        #{userAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userPass != null">
+        #{userPass,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userIcon != null">
+        #{userIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=CHAR},
+      </if>
+      <if test="valiTime != null">
+        #{valiTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="ownerId != null">
+        #{ownerId,jdbcType=BIGINT},
+      </if>
+      <if test="userRow1 != null">
+        #{userRow1,jdbcType=VARCHAR},
+      </if>
+      <if test="userRow2 != null">
+        #{userRow2,jdbcType=VARCHAR},
+      </if>
+      <if test="userRow3 != null">
+        #{userRow3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ac.cn.chm.uc.model.UserInfo">
+    update uc_user_info
+    <set>
+      <if test="userAccount != null">
+        user_account = #{userAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userPass != null">
+        user_pass = #{userPass,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userIcon != null">
+        user_icon = #{userIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        user_status = #{userStatus,jdbcType=CHAR},
+      </if>
+      <if test="valiTime != null">
+        vali_time = #{valiTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="ownerId != null">
+        owner_id = #{ownerId,jdbcType=BIGINT},
+      </if>
+      <if test="userRow1 != null">
+        user_row1 = #{userRow1,jdbcType=VARCHAR},
+      </if>
+      <if test="userRow2 != null">
+        user_row2 = #{userRow2,jdbcType=VARCHAR},
+      </if>
+      <if test="userRow3 != null">
+        user_row3 = #{userRow3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ac.cn.chm.uc.model.UserInfo">
+    update uc_user_info
+    set user_account = #{userAccount,jdbcType=VARCHAR},
+      user_pass = #{userPass,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      user_icon = #{userIcon,jdbcType=VARCHAR},
+      user_status = #{userStatus,jdbcType=CHAR},
+      vali_time = #{valiTime,jdbcType=TIMESTAMP},
+      operator_id = #{operatorId,jdbcType=BIGINT},
+      owner_id = #{ownerId,jdbcType=BIGINT},
+      user_row1 = #{userRow1,jdbcType=VARCHAR},
+      user_row2 = #{userRow2,jdbcType=VARCHAR},
+      user_row3 = #{userRow3,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+</mapper>

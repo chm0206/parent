@@ -1,0 +1,16 @@
+outputdir: F:\stsworkspace\MyBatisPlusGenerator\
+driver-class-name: com.mysql.jdbc.Driver
+#"jdbc:mysql://localhost:3306/demo"
+url: jdbc:mysql://127.0.0.1:3306/uc?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+username: fj
+password: chm
+tablName: test_user
+packageName: ac.cn.chm.uc
+packMapper: mapper
+packService: service
+packController: controller
+packEntity: entity
+xmlMapper: mapper
+iService: %sService  #如果需要添加i，在%s前添加
+bean: 陈焕明 #作者
+tabl_prifix:  tb_,test_ #文件前缀
